@@ -29,7 +29,9 @@
     <import_component_type>Svc/RateGroupDriver/RateGroupDriverComponentAi.xml</import_component_type>
     <import_component_type>Drv/BlockDriver/BlockDriverComponentAi.xml</import_component_type>
     <import_component_type>Svc/FileDownlink/FileDownlinkComponentAi.xml</import_component_type>
-    <import_component_type>Svc/FileManager/FileManagerComponentAi.xml</import_component_type>
+		<!--
+		 <import_component_type>Svc/FileManager/FileManagerComponentAi.xml</import_component_type>
+		-->
     <import_component_type>Svc/PassiveConsoleTextLogger/PassiveTextLoggerComponentAi.xml</import_component_type>
     <import_component_type>Svc/LinuxTimer/LinuxTimerComponentAi.xml</import_component_type>
     <import_component_type>Drv/ByteStreamDriverModel/ByteStreamDriverComponentAi.xml</import_component_type>
@@ -49,19 +51,24 @@
     <instance namespace="Svc" name="fileUplink" type="FileUplink" base_id="261"  base_id_window="20" />
     <instance namespace="Svc" name="fileUplinkBufferManager" type="BufferManager" base_id="301"  base_id_window="20" />
     <instance namespace="Svc" name="fileDownlink" type="FileDownlink" base_id="501"  base_id_window="20" />
+	<!--
     <instance namespace="Svc" name="fileManager" type="FileManager" base_id="601"  base_id_window="20" />
+	-->
     <instance namespace="Svc" name="textLogger" type="PassiveTextLogger" base_id="521"  base_id_window="20" />
     <instance namespace="Svc" name="fatalAdapter" type="AssertFatalAdapter" base_id="341"  base_id_window="20" />
     <instance namespace="Svc" name="fatalHandler" type="FatalHandler" base_id="1"  base_id_window="20" />
-    <instance namespace="Svc" name="linuxTime" type="Time" base_id="441"  base_id_window="20" />
+	<!--
+	<instance namespace="Svc" name="linuxTime" type="Time" base_id="441"  base_id_window="20" />
+	-->
     <instance namespace="Svc" name="staticMemory" type="StaticMemory" base_id="661"  base_id_window="20" />
     <instance namespace="Svc" name="downlink" type="Framer" base_id="681"  base_id_window="20" />
     <instance namespace="Svc" name="uplink" type="Deframer" base_id="701"  base_id_window="20" />
 
     <!-- Communications driver. May be swapped with other comm drivers like UART -->
     <!-- Note: here we have tcp reliable uplink, and Udp (low latency) downlink -->
-    <instance namespace="Drv" name="comm" type="ByteStreamDriverModel" base_id="621" base_id_window="20" />
-
+	<!--
+	<instance namespace="Drv" name="comm" type="ByteStreamDriverModel" base_id="621" base_id_window="20" />
+	-->
     <!-- Rate Group Components -->
 
     <instance namespace="Svc" name="rateGroupDriverComp" type="RateGroupDriver" base_id="461"  base_id_window="20" />
@@ -83,14 +90,16 @@
 
     <!-- Connections -->
     <!-- Communications driver connections -->
-    <connection name = "UplinkDrvAllocate">
+	<!--
+	<connection name = "UplinkDrvAllocate">
         <source component = "comm" port = "allocate" type = "Fw::BufferGet" num = "0"/>
         <target component = "staticMemory" port = "bufferAllocate" type = "Fw::BufferGet" num = "0"/>
     </connection>
     <connection name = "UplinkRecv">
         <source component = "comm" port = "recv" type = "Drv::ByteStreamSend" num = "0"/>
         <target component = "uplink" port = "framedIn" type = "Drv::ByteStreamSend" num = "0"/>
-    </connection>
+	</connection>
+	-->
     <connection name = "UplinkDeallocate">
         <source component = "uplink" port = "framedDeallocate" type = "Fw::BufferSend" num = "0"/>
         <target component = "staticMemory" port = "bufferDeallocate" type = "Fw::BufferSend" num = "0"/>
@@ -122,6 +131,7 @@
         <source component = "downlink" port = "framedAllocate" type = "Fw::BufferGet" num = "0"/>
         <target component = "staticMemory" port = "bufferAllocate" type = "Drv::BufferGet" num = "1"/>
     </connection>
+	<!--
     <connection name = "DownlinkSend">
         <source component = "downlink" port = "framedOut" type = "Fw::BufferSend" num = "0"/>
         <target component = "comm" port = "send" type = "Drv::ByteStreamSend" num = "0"/>
@@ -130,6 +140,7 @@
         <source component = "comm" port = "deallocate" type = "Fw::BufferSend" num = "0"/>
         <target component = "staticMemory" port = "bufferDeallocate" type = "Fw::BufferSend" num = "1"/>
     </connection>
+	-->
 
     <!-- Downlink data connections -->
     <connection name = "eventLoggerPkts">
@@ -213,10 +224,12 @@
          <source component = "pingRcvr" port = "CmdReg" type = "CmdReg" num = "0"/>
          <target component = "cmdDisp" port = "compCmdReg" type = "CmdReg" num = "13"/>
     </connection>
+	<!--
     <connection name = "FileManagerReg">
          <source component = "fileManager" port = "cmdRegOut" type = "CmdReg" num = "0"/>
          <target component = "cmdDisp" port = "compCmdReg" type = "CmdReg" num = "14"/>
     </connection>
+	-->
 
     <!-- Command Dispatch Ports - Dispatch port number must match registration port for each component -->
 
@@ -280,10 +293,12 @@
          <source component = "cmdDisp" port = "compCmdSend" type = "Cmd" num = "13"/>
          <target component = "pingRcvr" port = "CmdDisp" type = "Cmd" num = "0"/>
     </connection>
+	<!--
     <connection name = "FileManagerDisp">
          <source component = "cmdDisp" port = "compCmdSend" type = "Cmd" num = "14"/>
          <target component = "fileManager" port = "cmdIn" type = "Cmd" num = "0"/>
     </connection>
+	-->
     
    
     <!-- Command Reply Ports - Go to the same response port on the dispatcher -->
@@ -312,10 +327,12 @@
         <source component = "fileDownlink" port = "cmdResponseOut" type = "CmdResponse" num = "0"/>
         <target component = "cmdDisp" port = "compCmdStat" type = "CmdResponse" num = "0"/>
     </connection>
+	<!--
     <connection name = "FileManagerReply">
         <source component = "fileManager" port = "cmdResponseOut" type = "CmdResponse" num = "0"/>
         <target component = "cmdDisp" port = "compCmdStat" type = "CmdResponse" num = "0"/>
     </connection>
+	-->
     <connection name = "PingRcvStat">
          <source component = "pingRcvr" port = "CmdStatus" type = "CmdResponse" num = "0"/>
          <target component = "cmdDisp" port = "compCmdStat" type = "CmdResponse" num = "0"/>
@@ -398,10 +415,12 @@
         <source component = "fileDownlink" port = "eventOut" type = "Log" num = "0"/>
         <target component = "eventLogger" port = "LogRecv" type = "Log" num = "0"/>
     </connection>
+	<!--
     <connection name = "FileManagerLog">
         <source component = "fileManager" port = "eventOut" type = "Log" num = "0"/>
         <target component = "eventLogger" port = "LogRecv" type = "Log" num = "0"/>
     </connection>
+	-->
     <connection name = "RG1Ev">
          <source component = "rateGroup1Comp" port = "Log" type = "Log" num = "0"/>
          <target component = "eventLogger" port = "LogRecv" type = "Log" num = "0"/>
@@ -537,10 +556,12 @@
         <source component = "fileUplink" port = "tlmOut" type = "Tlm" num = "0"/>
         <target component = "chanTlm" port = "TlmRecv" type = "Tlm" num = "0"/>
     </connection>
+	<!--
     <connection name = "fileManagerTlm">
         <source component = "fileManager" port = "tlmOut" type = "Tlm" num = "0"/>
         <target component = "chanTlm" port = "TlmRecv" type = "Tlm" num = "0"/>
     </connection>
+	-->
     <connection name = "cmdSeqTlm">
         <source component = "cmdSeq" port = "tlmOut" type = "Tlm" num = "0"/>
         <target component = "chanTlm" port = "TlmRecv" type = "Tlm" num = "0"/>
@@ -623,6 +644,7 @@
 
     <!-- Time Connections -->
 
+	<!--
     <connection name = "prmDbTime">
         <source component = "prmDb" port = "Time" type = "Time" num = "0"/>
         <target component = "linuxTime" port = "timeGetPort" type = "Time" num = "0"/>
@@ -711,6 +733,7 @@
          <source component = "blockDrv" port = "Time" type = "Time" num = "0"/>
          <target component = "linuxTime" port = "timeGetPort" type = "Time" num = "0"/>
     </connection>    
+	-->
 
     <!-- Rate Group Connections -->
    
@@ -891,14 +914,18 @@
          <source component = "blockDrv" port = "PingOut" type = "Ping" num = "0"/>
          <target component = "health" port = "PingReturn" type = "Ping" num = "11"/>
     </connection>
+	<!--
     <connection name = "fileManagerPingSend">
          <source component = "health" port = "PingSend" type = "Ping" num = "12"/>
          <target component = "fileManager" port = "pingIn" type = "Ping" num = "0"/>
     </connection>
+	-->
+	<!--
     <connection name = "fileManagerPingRecv">
          <source component = "fileManager" port = "pingOut" type = "Ping" num = "0"/>
          <target component = "health" port = "PingReturn" type = "Ping" num = "12"/>
     </connection>
+	-->
 
     <!-- Socket Ground System Connections -->
 

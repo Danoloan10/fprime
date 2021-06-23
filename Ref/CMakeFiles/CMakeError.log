@@ -1,0 +1,90 @@
+Determining if the C compiler works failed with the following output:
+Change Dir: /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d4028/fast && /usr/bin/make -f CMakeFiles/cmTC_d4028.dir/build.make CMakeFiles/cmTC_d4028.dir/build
+make[1]: Entering directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d4028.dir/testCCompiler.c.obj
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-gcc  -I/opt/xm-arm/xm/include -I/opt/xm-arm/xal/include  --include xm_inc/config.h --include xm_inc/arch/arch_types.h -o CMakeFiles/cmTC_d4028.dir/testCCompiler.c.obj   -c /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_d4028
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d4028.dir/link.txt --verbose=1
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-ld       -u start -u xmImageHdr -T/opt/xm-arm/xal/lib/loader.lds --start-group /opt/xilinx/gnu/arm/lin/bin/../lib/gcc/arm-xilinx-eabi/4.8.3/libgcc.a -lxm -lxal --end-group -Ttext=0x10000000 CMakeFiles/cmTC_d4028.dir/testCCompiler.c.obj  -o cmTC_d4028   -L/opt/xm-arm/xal/lib  -L/opt/xm-arm/xm/lib 
+/opt/xm-arm/xal/lib/libxal.a(boot.o): In function `ModesAndStack':
+(.text.init+0x2f8): undefined reference to `PartitionMain'
+make[1]: *** [CMakeFiles/cmTC_d4028.dir/build.make:87: cmTC_d4028] Error 1
+make[1]: Leaving directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_d4028/fast] Error 2
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_13b9c/fast && /usr/bin/make -f CMakeFiles/cmTC_13b9c.dir/build.make CMakeFiles/cmTC_13b9c.dir/build
+make[1]: Entering directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_13b9c.dir/testCCompiler.c.obj
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-gcc  -I/opt/xm-arm/xm/include -I/opt/xm-arm/xal/include  --include xm_inc/config.h --include xm_inc/arch/arch_types.h -o CMakeFiles/cmTC_13b9c.dir/testCCompiler.c.obj   -c /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_13b9c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13b9c.dir/link.txt --verbose=1
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-ld       -u start -u xmImageHdr -T/opt/xm-arm/xal/lib/loader.lds --start-group /opt/xilinx/gnu/arm/lin/bin/../lib/gcc/arm-xilinx-eabi/4.8.3/libgcc.a -lxm -lxal --end-group -Ttext=0x10000000 CMakeFiles/cmTC_13b9c.dir/testCCompiler.c.obj  -o cmTC_13b9c   -L/opt/xm-arm/xal/lib  -L/opt/xm-arm/xm/lib 
+/opt/xm-arm/xal/lib/libxal.a(boot.o): In function `ModesAndStack':
+(.text.init+0x2f8): undefined reference to `PartitionMain'
+make[1]: *** [CMakeFiles/cmTC_13b9c.dir/build.make:87: cmTC_13b9c] Error 1
+make[1]: Leaving directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_13b9c/fast] Error 2
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7b1fe/fast && /usr/bin/make -f CMakeFiles/cmTC_7b1fe.dir/build.make CMakeFiles/cmTC_7b1fe.dir/build
+make[1]: Entering directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7b1fe.dir/testCCompiler.c.obj
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-gcc  -I/opt/xm-arm/xm/include -I/opt/xm-arm/xal/include  --include xm_inc/config.h --include xm_inc/arch/arch_types.h -o CMakeFiles/cmTC_7b1fe.dir/testCCompiler.c.obj   -c /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_7b1fe
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7b1fe.dir/link.txt --verbose=1
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-ld       -u start -u xmImageHdr -T/opt/xm-arm/xal/lib/loader.lds --start-group /opt/xilinx/gnu/arm/lin/bin/../lib/gcc/arm-xilinx-eabi/4.8.3/libgcc.a -lxm -lxal --end-group -Ttext=0x10000000 CMakeFiles/cmTC_7b1fe.dir/testCCompiler.c.obj  -o cmTC_7b1fe   -L/opt/xm-arm/xal/lib  -L/opt/xm-arm/xm/lib 
+/opt/xm-arm/xal/lib/libxal.a(boot.o): In function `ModesAndStack':
+(.text.init+0x2f8): undefined reference to `PartitionMain'
+make[1]: *** [CMakeFiles/cmTC_7b1fe.dir/build.make:87: cmTC_7b1fe] Error 1
+make[1]: Leaving directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_7b1fe/fast] Error 2
+
+
+
+Determining if the CXX compiler works failed with the following output:
+Change Dir: /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2c12f/fast && /usr/bin/make -f CMakeFiles/cmTC_2c12f.dir/build.make CMakeFiles/cmTC_2c12f.dir/build
+make[1]: Entering directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2c12f.dir/testCXXCompiler.cxx.obj
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-g++   -I/opt/xm-arm/xm/include -I/opt/xm-arm/xal/include  --include xm_inc/config.h --include xm_inc/arch/arch_types.h -o CMakeFiles/cmTC_2c12f.dir/testCXXCompiler.cxx.obj -c /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_2c12f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2c12f.dir/link.txt --verbose=1
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-ld       -u start -u xmImageHdr -T/opt/xm-arm/xal/lib/loader.lds --start-group /opt/xilinx/gnu/arm/lin/bin/../lib/gcc/arm-xilinx-eabi/4.8.3/libgcc.a -lxm -lxal --end-group -Ttext=0x10000000 CMakeFiles/cmTC_2c12f.dir/testCXXCompiler.cxx.obj  -o cmTC_2c12f   -L/opt/xm-arm/xal/lib  -L/opt/xm-arm/xm/lib 
+/opt/xm-arm/xal/lib/libxal.a(boot.o): In function `ModesAndStack':
+(.text.init+0x2f8): undefined reference to `PartitionMain'
+make[1]: *** [CMakeFiles/cmTC_2c12f.dir/build.make:87: cmTC_2c12f] Error 1
+make[1]: Leaving directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_2c12f/fast] Error 2
+
+
+
+Determining if the CXX compiler works failed with the following output:
+Change Dir: /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bb741/fast && /usr/bin/make -f CMakeFiles/cmTC_bb741.dir/build.make CMakeFiles/cmTC_bb741.dir/build
+make[1]: Entering directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_bb741.dir/testCXXCompiler.cxx.obj
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-g++   -I/opt/xm-arm/xm/include -I/opt/xm-arm/xal/include  --include xm_inc/config.h --include xm_inc/arch/arch_types.h -o CMakeFiles/cmTC_bb741.dir/testCXXCompiler.cxx.obj -c /opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_bb741
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb741.dir/link.txt --verbose=1
+/opt/xilinx/gnu/arm/lin/bin/arm-xilinx-eabi-ld       -u start -u xmImageHdr -T/opt/xm-arm/xal/lib/loader.lds --start-group /opt/xilinx/gnu/arm/lin/bin/../lib/gcc/arm-xilinx-eabi/4.8.3/libgcc.a -lxm -lxal --end-group -Ttext=0x10000000 CMakeFiles/cmTC_bb741.dir/testCXXCompiler.cxx.obj  -o cmTC_bb741   -L/opt/xm-arm/xal/lib  -L/opt/xm-arm/xm/lib 
+/opt/xm-arm/xal/lib/libxal.a(boot.o): In function `ModesAndStack':
+(.text.init+0x2f8): undefined reference to `PartitionMain'
+make[1]: *** [CMakeFiles/cmTC_bb741.dir/build.make:87: cmTC_bb741] Error 1
+make[1]: Leaving directory '/opt/fprime/fprime/Ref/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_bb741/fast] Error 2
+
+
+

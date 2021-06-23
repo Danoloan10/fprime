@@ -57,7 +57,7 @@ Svc::ConsoleTextLoggerImpl textLogger(FW_OPTIONAL_NAME("TLOG"));
 
 Svc::ActiveLoggerImpl eventLogger(FW_OPTIONAL_NAME("ELOG"));
 
-Svc::LinuxTimeImpl linuxTime(FW_OPTIONAL_NAME("LTIME"));
+//Svc::LinuxTimeImpl linuxTime(FW_OPTIONAL_NAME("LTIME"));
 
 Svc::TlmChanImpl chanTlm(FW_OPTIONAL_NAME("TLM"));
 
@@ -70,13 +70,13 @@ Svc::PrmDbImpl prmDb(FW_OPTIONAL_NAME("PRM"),"PrmDb.dat");
 
 Ref::PingReceiverComponentImpl pingRcvr(FW_OPTIONAL_NAME("PngRecv"));
 
-Drv::TcpClientComponentImpl comm(FW_OPTIONAL_NAME("Tcp"));
+//Drv::TcpClientComponentImpl comm(FW_OPTIONAL_NAME("Tcp"));
 
 Svc::FileUplink fileUplink(FW_OPTIONAL_NAME("fileUplink"));
 
 Svc::FileDownlink fileDownlink(FW_OPTIONAL_NAME("fileDownlink"));
 
-Svc::FileManager fileManager(FW_OPTIONAL_NAME("fileManager"));
+//Svc::FileManager fileManager(FW_OPTIONAL_NAME("fileManager"));
 
 Svc::BufferManagerComponentImpl fileUplinkBufferManager(FW_OPTIONAL_NAME("fileUplinkBufferManager"));
 
@@ -138,9 +138,9 @@ bool constructApp(bool dump, U32 port_number, char* hostname) {
 #endif
 
     eventLogger.init(10,0);
-    
-    linuxTime.init(0);
 
+//	linuxTime.init(0);
+    
     chanTlm.init(10,0);
 
     cmdDisp.init(20,0);
@@ -150,13 +150,13 @@ bool constructApp(bool dump, U32 port_number, char* hostname) {
 
     prmDb.init(10,0);
 
-    comm.init(0);
+//	comm.init(0);
     downlink.init(0);
     uplink.init(0);
     fileUplink.init(30, 0);
     fileDownlink.init(30, 0);
     fileDownlink.configure(1000, 1000, 1000, 10);
-    fileManager.init(30, 0);
+//  fileManager.init(30, 0);
     fileUplinkBufferManager.init(0);
     SG1.init(10,0);
     SG2.init(10,1);
@@ -190,7 +190,7 @@ bool constructApp(bool dump, U32 port_number, char* hostname) {
     eventLogger.regCommands();
     prmDb.regCommands();
     fileDownlink.regCommands();
-    fileManager.regCommands();
+//  fileManager.regCommands();
     SG1.regCommands();
     SG2.regCommands();
     SG3.regCommands();
@@ -226,7 +226,7 @@ bool constructApp(bool dump, U32 port_number, char* hostname) {
         {3,5,getHealthName(fileDownlink)}, // 9
         {3,5,getHealthName(pingRcvr)}, // 10
         {3,5,getHealthName(blockDrv)}, // 11
-        {3,5,getHealthName(fileManager)}, // 12
+//      {3,5,getHealthName(fileManager)}, // 12
     };
 
     // register ping table
@@ -250,12 +250,11 @@ bool constructApp(bool dump, U32 port_number, char* hostname) {
 
     fileDownlink.start(0, 100, 10*1024);
     fileUplink.start(0, 100, 10*1024);
-    fileManager.start(0, 100, 10*1024);
+//  fileManager.start(0, 100, 10*1024);
 
     pingRcvr.start(0, 100, 10*1024);
 
-   
-
+	/*
     // Initialize socket server if and only if there is a valid specification
     if (hostname != NULL && port_number != 0) {
         Fw::EightyCharString name("ReceiveTask");
@@ -263,6 +262,8 @@ bool constructApp(bool dump, U32 port_number, char* hostname) {
         comm.configure(hostname, port_number);
         comm.startSocketTask(name, 100, 10 * 1024);
     }
+	*/
+
     return false;
 }
 
@@ -277,7 +278,7 @@ void exitTasks(void) {
     prmDb.exit();
     fileUplink.exit();
     fileDownlink.exit();
-    fileManager.exit();
+//  fileManager.exit();
     cmdSeq.exit();
     pingRcvr.exit();
     // join the component threads with NULL pointers to free them
@@ -291,11 +292,11 @@ void exitTasks(void) {
     (void) prmDb.ActiveComponentBase::join(NULL);
     (void) fileUplink.ActiveComponentBase::join(NULL);
     (void) fileDownlink.ActiveComponentBase::join(NULL);
-    (void) fileManager.ActiveComponentBase::join(NULL);
+//  (void) fileManager.ActiveComponentBase::join(NULL);
     (void) cmdSeq.ActiveComponentBase::join(NULL);
     (void) pingRcvr.ActiveComponentBase::join(NULL);
-    comm.stopSocketTask();
-    (void) comm.joinSocketTask(NULL);
+//  comm.stopSocketTask();
+//  (void) comm.joinSocketTask(NULL);
     cmdSeq.deallocateBuffer(mallocator);
     fileUplinkBufferManager.cleanup();
 }

@@ -34,7 +34,7 @@ namespace Ref {
         signalAmplitude(0.0f),
         signalPhase(0.0f),
         ticks(0),
-        sigType(SignalType::SINE),
+        sigType(SignalType::SQUARE),
         sigHistory(),
         sigPairHistory(),
         running(false),
@@ -72,6 +72,7 @@ namespace Ref {
               val = m * static_cast<F32>(ticks % halfSamplesPerPeriod);
               break;
           }
+		  /*
           case SignalType::SINE:
           {
               F32 normalizedFrequency = 1.0f / samplesPerPeriod;
@@ -79,16 +80,19 @@ namespace Ref {
                       static_cast<F32>(ticks)) + (this->signalPhase * 2.0 * M_PI));
               break;
           }
+		  */
           case SignalType::SQUARE:
           {
               val = this->signalAmplitude * ((ticks % static_cast<U32>(samplesPerPeriod) < halfSamplesPerPeriod) ? 1.0f : -1.0f);
               break;
           }
+		  /*
           case SignalType::NOISE:
           {
               val = this->signalAmplitude * (std::rand() / static_cast<double>(RAND_MAX));
               break;
           }
+		  */
           default:
               FW_ASSERT(0); // Should never happen
       }

@@ -15,10 +15,10 @@ extern "C" {
 #endif
 
 namespace Os {
-#if defined(TGT_OS_TYPE_VXWORKS)
-    typedef int TaskIdRepr;
-#elif defined(TGT_OS_TYPE_LINUX) || defined(TGT_OS_TYPE_DARWIN)
+#if defined(TGT_OS_TYPE_LINUX) || defined(TGT_OS_TYPE_DARWIN)
     typedef pthread_t TaskIdRepr;
+#else
+    typedef int TaskIdRepr;
 #endif
 }
 

@@ -3,6 +3,6 @@
     <comment>Enum of different supported signal types.</comment>
     <item name="TRIANGLE" value="0"/>
     <item name="SQUARE" value="1"/>
-    <item name="SINE" value="2"/>
-    <item name="NOISE" value="3"/>
+	<!--<item name="SINE" value="2"/>-->
+	<!--<item name="NOISE" value="3"/>-->
 </enum>

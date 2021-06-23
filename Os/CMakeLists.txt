@@ -52,6 +52,22 @@ if (FPRIME_USE_POSIX)
         "${CMAKE_CURRENT_LIST_DIR}/Posix/TaskId.cpp"
         "${CMAKE_CURRENT_LIST_DIR}/Linux/Directory.cpp"
     )
+elseif (FPRIME_USE_BAREMETAL)
+	list(APPEND SOURCE_FILES
+		"${CMAKE_CURRENT_LIST_DIR}/LogPrintfNoFlush.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Pthreads/BufferQueueCommon.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Pthreads/PriorityBufferQueue.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Pthreads/MaxHeap/MaxHeap.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Baremetal/File.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Baremetal/FileSystem.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Baremetal/IntervalTimer.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Baremetal/Mutex.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Baremetal/Queue.cpp"
+		"${CMAKE_CURRENT_LIST_DIR}/Baremetal/Task.cpp"
+	)
+	set(FPRIME_USE_BAREMETAL_SCHEDULER 1)
+else()
+	message(FATAL_ERROR "Missing OS implementation")
 endif()
 # Darwin IPC queue implementation
 if(${CMAKE_SYSTEM_NAME} STREQUAL "Darwin")

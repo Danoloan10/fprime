@@ -6,11 +6,22 @@
 #
 # Note: using PROJECT_NAME as EXECUTABLE_NAME
 ####
-set(SOURCE_FILES
-  "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentAi.xml"
-  "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentCommonImpl.cpp"
-  "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentLinuxImpl.cpp"
-)
+if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux" OR ${CMAKE_SYSTEM_NAME} STREQUAL "arm-linux-gnueabihf")
+  set(SOURCE_FILES
+    "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentAi.xml"
+    "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentCommonImpl.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentLinuxImpl.cpp"
+  )
+elseif (FPRIME_USE_BAREMETAL)
+  set(SOURCE_FILES
+    "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentAi.xml"
+    "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentCommonImpl.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/FatalHandlerComponentBaremetalImpl.cpp"
+  )
+else ()
+  message(FATAL_ERROR "Missing FatalHandler implementation")
+endif()
+
 set(MOD_DEPS
   Os
   Fw/Logger
